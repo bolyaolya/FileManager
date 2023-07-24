@@ -112,9 +112,8 @@ final class FilesViewController: UIViewController {
 //        }
 //    }
     
-    @objc private func createFolderFunc() {
-        
-    }
+//    @objc private func createFolderFunc() {
+//    }
 }
 
 extension FilesViewController : UITableViewDelegate, UITableViewDataSource {
