@@ -12,10 +12,19 @@ final class FilesViewController: UIViewController {
     
     //MARK: - Properties
     
+    var alphabeticalSort = UserDefaults.standard.bool(forKey: "sortScheme")
+    
+    
     var path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
     var files : [String] {
-        (try? FileManager.default.contentsOfDirectory(atPath: path)) ?? []
+        let file = (try? FileManager.default.contentsOfDirectory(atPath: path)) ?? []
+        let sort = UserDefaults.standard.bool(forKey: "sortStatus")
         
+        if sort == true {
+            return file.sorted(by: <)
+        } else {
+            return file.sorted(by: >)
+        }
     }
     
     private lazy var addPhotoButton : UIBarButtonItem = {
@@ -112,8 +121,8 @@ final class FilesViewController: UIViewController {
 //        }
 //    }
     
-//    @objc private func createFolderFunc() {
-//    }
+    @objc private func createFolderFunc() {
+    }
 }
 
 extension FilesViewController : UITableViewDelegate, UITableViewDataSource {
